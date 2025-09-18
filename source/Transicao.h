@@ -1,14 +1,14 @@
-#ifndef TRANSICOES_H
-#define TRANSICOES_H
+#ifndef TRANSICAO_H
+#define TRANSICAO_H
 
 #include "Leitor.h"
 
 // Classe responsável por simular o funcionamento das transições
-class Transicoes
+class Transicao
 {
     public:
         // Construtor da classe
-        Transicoes(std::string estado_origem, std::string leitura, std::string topo_pilha, std::string substituir_topo, std::string estado_destino)
+        Transicao(std::string estado_origem, std::string leitura, std::string topo_pilha, std::string substituir_topo, std::string estado_destino)
         {
             this->estado_destino = estado_origem;
             this->leitura = leitura;
