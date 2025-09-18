@@ -13,12 +13,6 @@ using json = nlohmann::json;
 class Leitor
 {
     public:
-        // Construtor da classe
-        Leitor()
-        {
-            file = NULL;
-        }
-
         // Método responsável por ler o arquivo e armazená-lo no campo designado
         void lerJson(std::string path);
 
