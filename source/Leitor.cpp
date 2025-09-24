@@ -4,7 +4,7 @@ void Leitor::lerJson(std::string path)
 {
     std::ifstream f(path);
 
-    if(!f) // Caso não seja possível abrir o arquivo
+    if(!f)
     {
         std::cout << "Não foi possível abrir o arquivo!" << std::endl;
         return;
@@ -16,36 +16,30 @@ void Leitor::lerJson(std::string path)
 
 Automato Leitor::criarAutomato()
 {
-    if(file.is_null()) // Caso não tenha lido o arquivo, por algum erro ou engano
+    if(file.is_null())
     {
         std::cout << "O arquivo ainda não foi lido! Falha ao criar o autômato!" << std::endl;
         throw std::runtime_error("Não foi possível criar o autômato");
     }
 
-    // Recolhendo os dados dispostos no arquivo de forma fácil
     std::unordered_set<std::string> estados(file["estados"].begin(), file["estados"].end());
     std::unordered_set<std::string> alfabeto_entrada(file["alfabeto_entrada"].begin(), file["alfabeto_entrada"].end()); 
     std::unordered_set<std::string> alfabeto_pilha(file["alfabeto_pilha"].begin(), file["alfabeto_pilha"].end()); 
     std::string estado_inicial = file["estado_inicial"];
     std::unordered_set<std::string> estados_finais(file["estados_finais"].begin(), file["estados_finais"].end());
 
-    // Criando a estrutura que armazenará as transições
     std::vector<Transicao> transicoes;
 
-    // Recolhendo as informações das transições
     for(auto& transicao : file["transicoes"])
     {
-        // Recolhendo as informações de cada transição
         std::string estado_origem = transicao["estado_origem"];
         std::string leitura = transicao["leitura"];
         std::string topo_pilha = transicao["topo_pilha"];
         std::string substituir_topo = transicao["substituir_topo"];
         std::string estado_destino = transicao["estado_destino"];
 
-        // Adicionando as transições no vector com as informações
         transicoes.emplace_back(Transicao(estado_origem, leitura, topo_pilha, substituir_topo, estado_destino));
     }
 
-    // Retornando o autômato criado a partir das informações
     return Automato(estados, alfabeto_entrada, alfabeto_pilha, estado_inicial, estados_finais, transicoes);
 }

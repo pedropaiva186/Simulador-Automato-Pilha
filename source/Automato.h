@@ -7,7 +7,6 @@
 class Automato
 {
     public:
-        // Construtor da classe autômato, que será gerado pela classe Leitor
         Automato(std::unordered_set<std::string> estados, std::unordered_set<std::string> alfabeto_entrada, std::unordered_set<std::string> alfabeto_pilha, std::string estado_inicial, std::unordered_set<std::string> estados_finais, std::vector<Transicao> transicoes)
         {
             this->estados = estados;
@@ -20,7 +19,6 @@ class Automato
         }
 
     private:
-        // Os campos da classe automato (Por enquanto são os mesmos do json, mas provavelmente vai mudar com o desenvolvimento do projeto)
         std::unordered_set<std::string> estados;
         std::unordered_set<std::string> alfabeto_entrada;
         std::unordered_set<std::string> alfabeto_pilha;

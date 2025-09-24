@@ -13,10 +13,8 @@ using json = nlohmann::json;
 class Leitor
 {
     public:
-        // Método responsável por ler o arquivo e armazená-lo no campo designado
         void lerJson(std::string path);
 
-        // Cria o autômato a partir das informações já retiradas do arquivo pela função "lerJson"
         Automato criarAutomato();
 
     private:
